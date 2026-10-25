@@ -15,7 +15,7 @@ export function makeServer(root) {
     }
     const pathname = (req.url || '/').split('?')[0];
     const file = pathname === '/' ? 'index.html' : pathname.slice(1);
-    if (!/^(index\.html|styles\.css|app\.js|assets\/[a-z0-9-]+\.svg)$/.test(file)) {
+    if (!/^(index\.html|styles\.css|app\.js|catalog\.js|assets\/[a-z0-9-]+\.svg)$/.test(file)) {
       res.writeHead(404);
       return res.end('Page introuvable');
     }

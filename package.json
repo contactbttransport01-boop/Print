@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Site vitrine Print — accessoires maison et quotidien",
+  "description": "Site vitrine Print — bracelets de montre silicone 22 mm",
   "engines": { "node": ">=22" },
   "scripts": {
     "dev": "node server.mjs --source",
