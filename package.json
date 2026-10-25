@@ -9,6 +9,7 @@
     "dev": "node server.mjs --source",
     "build": "node scripts/build.mjs",
     "start": "node server.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "deploy:pages": "bash scripts/publish-pages.sh"
   }
 }

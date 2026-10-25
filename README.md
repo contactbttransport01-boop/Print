@@ -49,3 +49,13 @@ Les favoris utilisent uniquement `print-strap-favorites` dans le stockage du nav
 Confirmer compatibilités, différences A/B/C, dimensions, stock et fournisseur. Ajouter les photos réelles autorisées, fixer le prix public et renseigner contact, identité de l’éditeur, livraison, retours et mentions légales. Les assertions de l’aperçu IA AliExpress ne sont pas des garanties validées. Print n’est pas affilié à SUUNTO.
 
 Ce site ne propose ni paiement, ni panier, ni formulaire d’envoi. Le lien fournisseur mène à un vendeur externe. Aucun prix fournisseur, avis ou compteur de ventes n’est présenté comme appartenant à Print. La publication de l’environnement cloud ne met pas automatiquement le site en ligne sur un domaine public.
+
+## Hébergement GitHub Pages
+
+Les liens des fichiers sont relatifs pour fonctionner aussi sous `/Print/`.
+La branche `gh-pages` est destinée au contenu statique généré dans `dist/`.
+Dans les paramètres GitHub du dépôt, ouvrir **Pages**, choisir **Deploy from a branch**, puis **gh-pages** et **/ (root)**, et enregistrer.
+
+L’adresse attendue après activation et déploiement réussi est `https://contactbttransport01-boop.github.io/Print/`. La présence d’une branche de publication ne prouve pas que Pages est activé.
+
+Après toute modification du site, exécuter `npm test`, puis `npm run deploy:pages` pour générer et envoyer le contenu statique sur `gh-pages`. Cette commande publie les fichiers via Git, avec l’authentification existante ; elle ne peut pas activer GitHub Pages dans les paramètres. Une modification de `main` seule n’actualise pas cette branche.

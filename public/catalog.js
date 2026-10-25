@@ -29,4 +29,4 @@ export const variants = [
 ];
 export const defaultVariant = variants.find(variant => variant.id === 'b-green-black');
 export function variantById(id) { return variants.find(variant => variant.id === id); }
-export function imageFor(variant) { return `/assets/strap-${variant.base}-${variant.accent}.svg`; }
+export function imageFor(variant) { return `./assets/strap-${variant.base}-${variant.accent}.svg`; }

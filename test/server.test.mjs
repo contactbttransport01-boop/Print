@@ -30,7 +30,7 @@ test('tous les fichiers nécessaires sont servis avec le bon type MIME', async (
     ['/assets/strap-hero.svg', 'image/svg+xml'], ['/assets/favicon.svg', 'image/svg+xml'],
     ...[...new Set(variants.map(imageFor))].map(path => [path, 'image/svg+xml'])
   ]) {
-    const response = await fetch(origin + path);
+    const response = await fetch(new URL(path, origin + '/'));
     assert.equal(response.status, 200, path);
     assert.ok(response.headers.get('content-type').startsWith(type), path);
     assert.ok((await response.text()).length > 100, path);
