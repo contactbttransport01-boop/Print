@@ -1,5 +1,6 @@
 <section class="section wrap"><a class="back-link" href="{{ routes.all_products_collection_url }}">← La collection</a>{% render 'product-purchase', product: product, section_id: section.id, full_page: true, show_dynamic_checkout: section.settings.show_dynamic_checkout, section_note: section.settings.note %}</section>
 <div class="wrap app-blocks">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% if request.design_mode and settings.volume_offers_enabled == false %}<div class="wrap offer-editor-note">Les offres duo et trio sont préparées mais désactivées. Configurez les deux remises Shopify, puis activez-les dans Paramètres du thème → Offres duo et trio. Guide : SHOPIFY-OFFRES.md.</div>{% endif %}
 {% schema %}
 {"name":"Fiche produit","settings":[{"type":"checkbox","id":"show_dynamic_checkout","label":"Afficher le paiement accéléré Shopify","default":false},{"type":"textarea","id":"note","label":"Information complémentaire","default":"Avant de choisir un bracelet, vérifiez le modèle exact de votre montre, l’entrecorne et le système de fixation."}],"blocks":[{"type":"@app"}]}
 {% endschema %}

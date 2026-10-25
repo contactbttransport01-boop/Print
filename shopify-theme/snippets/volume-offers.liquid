@@ -1,0 +1,15 @@
+<fieldset class="volume-offers" data-offer-picker hidden>
+  <legend>Composez votre sélection</legend>
+  <label class="offer-card" for="OfferOne-{{ section_id }}"><input type="radio" id="OfferOne-{{ section_id }}" name="print-offer-{{ section_id }}" value="1" data-offer data-offer-price="{{ 1490 | money | strip_html | escape }}" checked><span><strong>1 bracelet</strong><small>Votre touche personnelle</small></span><span class="offer-price">{{ 1490 | money }}</span></label>
+  <label class="offer-card" for="OfferTwo-{{ section_id }}"><input type="radio" id="OfferTwo-{{ section_id }}" name="print-offer-{{ section_id }}" value="2" data-offer data-offer-price="{{ 2490 | money | strip_html | escape }}"><span><strong>Le duo · 2 bracelets</strong><small>{{ 490 | money }} d’économie sur le prix unitaire</small></span><span class="offer-price">{{ 2490 | money }}</span></label>
+  <label class="offer-card" for="OfferThree-{{ section_id }}"><input type="radio" id="OfferThree-{{ section_id }}" name="print-offer-{{ section_id }}" value="3" data-offer data-offer-price="{{ 3490 | money | strip_html | escape }}"><span><strong>Le trio · 3 bracelets</strong><small>{{ 980 | money }} d’économie sur le prix unitaire</small></span><span class="offer-price">{{ 3490 | money }}</span></label>
+  <p class="offer-note">Même coloris ou couleurs différentes : à vous de choisir. Remise appliquée au panier.</p>
+</fieldset>
+{% for item_index in (2..3) %}
+  <div class="extra-color" data-extra-color="{{ item_index }}" hidden>
+    <label class="field-label" for="ExtraVariant-{{ section_id }}-{{ item_index }}">Coloris du bracelet {{ item_index }}</label>
+    <select id="ExtraVariant-{{ section_id }}-{{ item_index }}" data-extra-variant disabled>
+      {% render 'variant-options', product: product, chosen_variant: chosen_variant %}
+    </select>
+  </div>
+{% endfor %}

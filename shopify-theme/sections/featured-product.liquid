@@ -13,6 +13,7 @@
   {% endif %}
 </section>
 <div class="wrap app-blocks">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% if request.design_mode and settings.volume_offers_enabled == false %}<div class="wrap offer-editor-note">Les offres duo et trio sont préparées mais désactivées. Configurez les deux remises Shopify, puis activez-les dans Paramètres du thème → Offres duo et trio. Guide : SHOPIFY-OFFRES.md.</div>{% endif %}
 {% schema %}
 {"name":"Produit vedette","settings":[{"type":"product","id":"product","label":"Produit (facultatif)","info":"Remplace le produit global pour cette section."},{"type":"text","id":"eyebrow","label":"Surtitre","default":"LA COLLECTION / PRINT"},{"type":"textarea","id":"heading","label":"Titre","default":"À chaque sortie,\nson duo."},{"type":"checkbox","id":"show_dynamic_checkout","label":"Afficher le paiement accéléré Shopify","default":false},{"type":"textarea","id":"note","label":"Information produit","default":"Vérifiez le modèle de votre montre, la largeur d’entrecorne et la fixation avant de choisir votre bracelet."}],"presets":[{"name":"Produit vedette"}],"blocks":[{"type":"@app"}]}
 {% endschema %}

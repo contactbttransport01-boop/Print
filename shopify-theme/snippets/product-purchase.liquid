@@ -2,8 +2,13 @@
   assign chosen_variant = product.selected_or_first_available_variant
   assign product_form_id = 'ProductForm-' | append: section_id
   assign product_title_id = 'ProductTitle-' | append: section_id
+  assign active_currency = cart.currency.iso_code | default: shop.currency
+  assign offers_eligible = false
+  if settings.volume_offers_enabled and settings.volume_offer_product.id == product.id and active_currency == 'EUR' and product.price_min == 1490 and product.price_max == 1490
+    assign offers_eligible = true
+  endif
 %}
-<div class="product-layout" data-product-root>
+<div class="product-layout" data-product-root data-offers-enabled="{{ offers_eligible }}">
   <div class="product-gallery">
     <div class="product-visual">
       {% if product.featured_image %}
@@ -21,18 +26,18 @@
     {% if full_page %}<h1 class="product-title" id="{{ product_title_id }}">{{ product.title | escape }}</h1>{% else %}<h3 class="product-title" id="{{ product_title_id }}"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>{% endif %}
     <div class="product-prices" aria-live="polite"><span class="product-price" data-product-price>{{ chosen_variant.price | money }}</span><s class="compare-price" data-compare-price{% unless chosen_variant.compare_at_price > chosen_variant.price %} hidden{% endunless %}>{{ chosen_variant.compare_at_price | money }}</s></div>
     {% if cart.taxes_included %}<p class="tax-note">Taxes incluses. {% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">Frais de livraison</a> calculés au paiement.{% else %}Frais de livraison calculés au paiement.{% endif %}</p>{% else %}<p class="tax-note">Taxes et frais de livraison calculés au paiement.</p>{% endif %}
-    {% form 'product', product, id: product_form_id, class: 'product-form' %}
+    {% form 'product', product, id: product_form_id, class: 'product-form', data-cart-add-url: routes.cart_add_url, data-cart-url: routes.cart_url %}
       {% if form.errors %}<div class="form-errors" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
       <label class="field-label" for="Variant-{{ section_id }}">{% if product.has_only_default_variant %}Produit{% else %}Choisissez votre variante{% endif %}</label>
       <select name="id" id="Variant-{{ section_id }}" data-variant-select>
-        {% for variant in product.variants %}
-          <option value="{{ variant.id }}"{% if variant == chosen_variant %} selected{% endif %} data-available="{{ variant.available }}" data-price="{{ variant.price | money | strip_html | escape }}" data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | strip_html | escape }}{% endif %}" data-min="{{ variant.quantity_rule.min | default: 1 }}" data-step="{{ variant.quantity_rule.increment | default: 1 }}" data-max="{{ variant.quantity_rule.max }}"{% if variant.featured_image %} data-image="{{ variant.featured_image | image_url: width: 1200 }}" data-image-alt="{{ variant.featured_image.alt | default: product.title | escape }}"{% endif %}>{{ variant.title | escape }} — {{ variant.price | money | strip_html }}{% unless variant.available %} · Épuisé{% endunless %}</option>
-        {% endfor %}
+        {% render 'variant-options', product: product, chosen_variant: chosen_variant %}
       </select>
-      <label class="field-label" for="Quantity-{{ section_id }}">Quantité</label><input class="quantity" id="Quantity-{{ section_id }}" type="number" name="quantity" value="{{ chosen_variant.quantity_rule.min | default: 1 }}" min="{{ chosen_variant.quantity_rule.min | default: 1 }}" step="{{ chosen_variant.quantity_rule.increment | default: 1 }}"{% if chosen_variant.quantity_rule.max %} max="{{ chosen_variant.quantity_rule.max }}"{% endif %} inputmode="numeric" required data-quantity>
+      {% if offers_eligible %}{% render 'volume-offers', product: product, chosen_variant: chosen_variant, section_id: section_id %}{% endif %}
+      <div data-quantity-field><label class="field-label" for="Quantity-{{ section_id }}">Quantité</label><input class="quantity" id="Quantity-{{ section_id }}" type="number" name="quantity" value="{{ chosen_variant.quantity_rule.min | default: 1 }}" min="{{ chosen_variant.quantity_rule.min | default: 1 }}" step="{{ chosen_variant.quantity_rule.increment | default: 1 }}"{% if chosen_variant.quantity_rule.max %} max="{{ chosen_variant.quantity_rule.max }}"{% endif %} inputmode="numeric" required data-quantity></div>
       <button class="button dark add-to-cart" type="submit" name="add" data-add-to-cart{% unless chosen_variant.available %} disabled{% endunless %}><span data-add-label>{% if chosen_variant.available %}Ajouter au panier{% else %}Épuisé{% endif %}</span><span class="arrow" aria-hidden="true"></span></button>
       <p class="availability" role="status" data-availability>{% if chosen_variant.available %}Disponible{% else %}Cette variante est indisponible.{% endif %}</p>
-      {% if show_dynamic_checkout %}{{ form | payment_button }}{% endif %}
+      <p class="form-errors" data-purchase-error role="alert" hidden></p><a class="small-link" data-check-cart href="{{ routes.cart_url }}" hidden>Vérifier mon panier</a>
+      {% unless offers_eligible %}{% if show_dynamic_checkout %}{{ form | payment_button }}{% endif %}{% endunless %}
     {% endform %}
     <div class="purchase-assurance"><span>Paiement via Shopify</span>{% if shop.shipping_policy.body != blank %}<a href="{{ shop.shipping_policy.url }}">Livraison</a>{% endif %}{% if shop.refund_policy.body != blank %}<a href="{{ shop.refund_policy.url }}">Retours</a>{% endif %}</div>
     {% if product.description != blank %}<div class="rte product-description">{{ product.description }}</div>{% endif %}

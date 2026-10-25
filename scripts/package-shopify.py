@@ -1,6 +1,7 @@
 """Build a Shopify theme ZIP with the required directories at the archive root."""
 import json
 import re
+import shutil
 import zipfile
 from pathlib import Path
 
@@ -35,3 +36,4 @@ with zipfile.ZipFile(output) as archive:
     assert 'layout/theme.liquid' in archive.namelist()
     assert all(not name.startswith(('/', '../', 'shopify-theme/')) for name in archive.namelist())
 print(f'{output}: {len(files)} fichiers, {output.stat().st_size} octets ; archive et schémas JSON valides.')
+shutil.copyfile(output, output.with_name('Print-Shopify-Offres.zip'))

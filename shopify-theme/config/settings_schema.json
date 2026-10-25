@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Print Sport",
-    "theme_version": "1.0.0",
+    "theme_version": "1.1.0",
     "theme_author": "Print",
     "theme_documentation_url": "https://github.com/contactbttransport01-boop/Print",
     "theme_support_url": "https://github.com/contactbttransport01-boop/Print/issues"
@@ -36,6 +36,27 @@
         "id": "featured_product",
         "label": "Produit de la boutique",
         "info": "Sélectionnez votre bracelet existant. Sans sélection, le premier produit disponible dans le catalogue est utilisé."
+      }
+    ]
+  },
+  {
+    "name": "Offres duo et trio",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Configurer d’abord le produit à 14,90 € et les remises automatiques Shopify : 4,90 € une seule fois dès 2 bracelets, 9,80 € une seule fois dès 3. Voir le guide SHOPIFY-OFFRES.md."
+      },
+      {
+        "type": "product",
+        "id": "volume_offer_product",
+        "label": "Bracelet concerné par les offres"
+      },
+      {
+        "type": "checkbox",
+        "id": "volume_offers_enabled",
+        "label": "Activer après configuration et test des remises",
+        "default": false,
+        "info": "Offres réservées à ce produit, en euros, si toutes ses variantes sont à 14,90 €. Aucun prix ni remise Shopify n’est créé par le thème."
       }
     ]
   }

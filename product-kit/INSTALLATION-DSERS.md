@@ -40,4 +40,4 @@ Prévisualiser, choisir une variante, contrôler photo et prix, ajouter au panie
 
 ## Informations encore manquantes
 
-Présence actuelle du produit dans Shopify, prix de vente, variantes retenues, photos et compatibilités confirmées, destination de livraison et coût livré. Aucun accès Shopify/DSers n’est connecté à la conversation ; l’import et la correspondance dans le compte restent à effectuer par le propriétaire.
+Le propriétaire a confirmé que le produit existe déjà dans Shopify : utiliser la correspondance DSers, sans nouvel import. Les prix souhaités sont 14,90 € au lieu de 19,90 €, deux pour 24,90 € et trois pour 34,90 €. Voir SHOPIFY-OFFRES.md pour appliquer réellement ces montants. Restent à confirmer les variantes retenues, les photos, les compatibilités, la destination de livraison et le coût livré. Aucun accès Shopify/DSers n’est connecté à la conversation ; l’import et la correspondance dans le compte restent à effectuer par le propriétaire.

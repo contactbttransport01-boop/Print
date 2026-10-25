@@ -30,3 +30,14 @@ Le thème est contrôlé localement avec Shopify Theme Check, ses fichiers JSON 
 ## Régénérer le ZIP
 
 Depuis la racine du dépôt : `python scripts/package-shopify.py`. Les dossiers Shopify doivent être à la racine de l’archive, sans dossier englobant. Les instructions sont livrées à part pour ne pas ajouter de fichier non reconnu au thème.
+
+## Offres 1 / 2 / 3 bracelets — version 1.1.0
+
+Le nouveau thème propose 1 bracelet à 14,90 €, 2 à 24,90 € et 3 à 34,90 €, avec un choix de coloris par unité. Lire **SHOPIFY-OFFRES.md** pour régler le prix et les deux réductions automatiques Shopify sur le produit existant. Le thème ne crée pas ces réductions. Le sélecteur reste désactivé tant que son activation n’est pas confirmée dans les paramètres. L’archive dédiée est `artifacts/Print-Shopify-Offres.zip`.
+
+Contrôles navigateur reproductibles, après installation de Playwright hors du dépôt comme indiqué dans README.md :
+
+```sh
+NODE_PATH=/tmp/print-browser-check/node_modules node scripts/shopify-browser-check.cjs
+NODE_PATH=/tmp/print-browser-check/node_modules node scripts/shopify-offers-check.cjs
+```
