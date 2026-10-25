@@ -1,0 +1,16 @@
+{% if section.settings.announcement != blank %}<div class="announcement">{{ section.settings.announcement | escape }}</div>{% endif %}
+<header class="header wrap">
+  <a class="logo" href="{{ routes.root_url }}">{{ settings.brand_name | default: shop.name | escape }}<span>SPORT & EVERYDAY</span></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="MainNavigation">Menu <span aria-hidden="true">☰</span></button>
+  <nav id="MainNavigation" aria-label="Navigation principale">
+    {% if settings.main_menu != blank %}
+      {% for link in settings.main_menu.links %}<a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}
+    {% else %}
+      <a href="{{ routes.root_url }}#FeaturedProduct">Le bracelet</a><a href="{{ routes.root_url }}#Questions">Vos questions</a><a href="{{ routes.all_products_collection_url }}">La collection</a>
+    {% endif %}
+  </nav>
+  <a class="cart-link" href="{{ routes.cart_url }}" aria-label="Panier, {{ cart.item_count }} article{% if cart.item_count != 1 %}s{% endif %}"><span class="cart-label">Mon panier</span><span class="cart-count">{{ cart.item_count }}</span></a>
+</header>
+{% schema %}
+{"name":"En-tête","settings":[{"type":"text","id":"announcement","label":"Bandeau","default":"LA MONTRE RESTE. LE STYLE CHANGE."}]}
+{% endschema %}

@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-product",
+      "settings": {}
+    },
+    "story": {
+      "type": "brand-story",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Comment choisir le bon bracelet ?",
+            "answer": "<p>Vérifiez le modèle exact de votre montre, la largeur d’entrecorne et le système de fixation. Une même largeur ne garantit pas à elle seule la compatibilité.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Comment sélectionner mon coloris ?",
+            "answer": "<p>Choisissez une variante dans le menu de la fiche produit. Le prix et la disponibilité s’actualisent selon votre choix. Les couleurs peuvent varier selon votre écran.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Comment connaître les conditions de livraison et de retour ?",
+            "answer": "<p>Consultez les politiques de notre boutique dans les liens du pied de page lorsqu’elles sont renseignées. Les frais de livraison sont précisés avant validation du paiement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "featured",
+    "story",
+    "faq"
+  ]
+}

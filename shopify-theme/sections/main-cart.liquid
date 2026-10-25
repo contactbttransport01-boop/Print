@@ -1,0 +1,13 @@
+<section class="section wrap cart-page"><p class="eyebrow">VOTRE SÉLECTION</p><h1 class="page-title">Votre panier.</h1>
+{% if cart.item_count > 0 %}
+  <form action="{{ routes.cart_url }}" method="post" id="CartForm">
+    {% for item in cart.items %}<div class="cart-item">
+      <a class="cart-image" href="{{ item.url }}">{% if item.image %}{{ item.image | image_url: width: 240 | image_tag: widths: '120, 240', sizes: '120px', loading: 'lazy', alt: item.product.title }}{% else %}{{ 'product-1' | placeholder_svg_tag }}{% endif %}</a>
+      <div class="cart-item-details"><h2><a href="{{ item.url }}">{{ item.product.title | escape }}</a></h2>{% unless item.product.has_only_default_variant %}<p>{{ item.variant.title | escape }}</p>{% endunless %}{% for property in item.properties %}{% assign first_character = property.first | slice: 0 %}{% if property.last != blank and first_character != '_' %}<p>{{ property.first | escape }} : {{ property.last | escape }}</p>{% endif %}{% endfor %}<p>{{ item.final_price | money }}</p><a class="small-link" href="{{ item.url_to_remove }}">Retirer</a></div>
+      <div class="cart-item-quantity"><label for="CartQuantity-{{ forloop.index }}">Quantité</label><input id="CartQuantity-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" step="{{ item.variant.quantity_rule.increment | default: 1 }}" inputmode="numeric" aria-label="Quantité de {{ item.product.title | escape }}"><strong>{{ item.final_line_price | money }}</strong></div>
+    </div>{% endfor %}
+    <div class="cart-summary"><button class="text-link" type="submit" name="update">Mettre à jour le panier</button><div><p class="cart-total">Total <strong>{{ cart.total_price | money }}</strong></p>{% for discount in cart.cart_level_discount_applications %}<p>{{ discount.title | escape }} : −{{ discount.total_allocated_amount | money }}</p>{% endfor %}<p class="tax-note">Livraison{% unless cart.taxes_included %} et taxes{% endunless %} calculée{% unless cart.taxes_included %}s{% endunless %} à l’étape suivante.</p><button class="button dark" type="submit" name="checkout">Passer au paiement <span class="arrow" aria-hidden="true"></span></button></div></div>
+  </form>
+{% else %}<div class="empty-state"><p>Votre panier attend votre prochain coup de cœur.</p><a class="button primary" href="{{ routes.all_products_collection_url }}">Découvrir les bracelets <span class="arrow" aria-hidden="true"></span></a></div>{% endif %}
+</section>
+{% schema %}{"name":"Panier","settings":[]}{% endschema %}

@@ -1,0 +1,18 @@
+{% liquid
+  assign chosen_product = section.settings.product | default: settings.featured_product
+  if chosen_product == blank
+    assign chosen_product = collections.all.products.first
+  endif
+%}
+<section class="section wrap" id="FeaturedProduct" aria-labelledby="FeaturedTitle-{{ section.id }}">
+  <div class="section-heading"><div><p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h2 id="FeaturedTitle-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h2></div><p>Les coloris, les prix et les disponibilités<br>sont ceux de notre catalogue.</p></div>
+  {% if chosen_product != blank %}
+    {% render 'product-purchase', product: chosen_product, section_id: section.id, full_page: false, show_dynamic_checkout: section.settings.show_dynamic_checkout, section_note: section.settings.note %}
+  {% else %}
+    <div class="empty-state"><h3>La collection se prépare.</h3><p>Notre produit sera bientôt présenté ici.</p>{% if request.design_mode %}<p><strong>Dans l’éditeur :</strong> choisissez un produit dans cette section ou dans Paramètres du thème → Produit vedette. Le produit doit être actif et publié sur le canal Boutique en ligne.</p>{% endif %}</div>
+  {% endif %}
+</section>
+<div class="wrap app-blocks">{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+{% schema %}
+{"name":"Produit vedette","settings":[{"type":"product","id":"product","label":"Produit (facultatif)","info":"Remplace le produit global pour cette section."},{"type":"text","id":"eyebrow","label":"Surtitre","default":"LA COLLECTION / PRINT"},{"type":"textarea","id":"heading","label":"Titre","default":"À chaque sortie,\nson duo."},{"type":"checkbox","id":"show_dynamic_checkout","label":"Afficher le paiement accéléré Shopify","default":false},{"type":"textarea","id":"note","label":"Information produit","default":"Vérifiez le modèle de votre montre, la largeur d’entrecorne et la fixation avant de choisir votre bracelet."}],"presets":[{"name":"Produit vedette"}],"blocks":[{"type":"@app"}]}
+{% endschema %}

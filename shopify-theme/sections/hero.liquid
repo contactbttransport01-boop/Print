@@ -1,0 +1,22 @@
+{% liquid
+  assign hero_product = settings.featured_product
+  if hero_product == blank
+    assign hero_product = collections.all.products.first
+  endif
+%}
+<section class="hero wrap" aria-labelledby="HeroTitle-{{ section.id }}">
+  <div class="hero-copy"><p class="eyebrow"><span class="dot"></span>{{ section.settings.eyebrow | escape }}</p><h1 id="HeroTitle-{{ section.id }}">{{ section.settings.heading | escape | newline_to_br }}</h1><p class="intro">{{ section.settings.text | escape | newline_to_br }}</p><a class="button primary" href="#FeaturedProduct">{{ section.settings.button_label | escape }} <span class="arrow" aria-hidden="true"></span></a><p class="hero-note">{{ section.settings.note | escape }}</p></div>
+  <div class="hero-art">
+    <p class="art-label">LE SENS DU DÉTAIL</p>
+    {% if hero_product.featured_image %}
+      {{ hero_product.featured_image | image_url: width: 1200 | image_tag: widths: '400, 600, 900, 1200', sizes: '(max-width: 700px) 100vw, 50vw', loading: 'eager', fetchpriority: 'high', class: 'hero-image', alt: hero_product.title }}
+    {% else %}
+      <img class="hero-image" src="{{ 'strap-hero.svg' | asset_url }}" alt="Illustration non contractuelle d’un bracelet silicone" width="720" height="700" loading="eager">
+      <p class="art-caption">ILLUSTRATION NON CONTRACTUELLE</p>
+    {% endif %}
+  </div>
+</section>
+<div class="values-strip"><div class="wrap"><span><b>01</b> Votre montre</span><span><b>02</b> Votre style</span><span><b>03</b> Votre couleur</span><span><b>04</b> Votre prochain essentiel</span></div></div>
+{% schema %}
+{"name":"Bannière Print","settings":[{"type":"text","id":"eyebrow","label":"Surtitre","default":"UN PETIT DÉTAIL. UNE NOUVELLE ALLURE."},{"type":"textarea","id":"heading","label":"Titre","default":"Gardez le rythme.\nChangez le style."},{"type":"textarea","id":"text","label":"Texte","default":"Un bracelet qui donne le ton.\nChoisissez votre prochaine touche personnelle."},{"type":"text","id":"button_label","label":"Bouton","default":"Trouver mon coloris"},{"type":"text","id":"note","label":"Signature","default":"Votre montre. Votre touche personnelle."}],"presets":[{"name":"Bannière Print"}]}
+{% endschema %}

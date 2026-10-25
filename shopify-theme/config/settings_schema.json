@@ -1,0 +1,42 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Print Sport",
+    "theme_version": "1.0.0",
+    "theme_author": "Print",
+    "theme_documentation_url": "https://github.com/contactbttransport01-boop/Print",
+    "theme_support_url": "https://github.com/contactbttransport01-boop/Print/issues"
+  },
+  {
+    "name": "Identité et navigation",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Nom affiché",
+        "default": "print"
+      },
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Menu principal"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Adresse e-mail de contact"
+      }
+    ]
+  },
+  {
+    "name": "Produit vedette",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Produit de la boutique",
+        "info": "Sélectionnez votre bracelet existant. Sans sélection, le premier produit disponible dans le catalogue est utilisé."
+      }
+    ]
+  }
+]
