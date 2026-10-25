@@ -1,0 +1,14 @@
+{
+  "name": "print-vitrine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site vitrine Print — accessoires maison et quotidien",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node server.mjs --source",
+    "build": "node scripts/build.mjs",
+    "start": "node server.mjs",
+    "test": "node --test"
+  }
+}

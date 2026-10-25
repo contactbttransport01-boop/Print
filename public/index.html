@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Découvrez Print : une sélection d’accessoires pour la maison, les escapades et les petits rituels du quotidien. Catalogue de démonstration.">
+  <title>Print — Le quotidien, en mieux.</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div class="announcement">DES OBJETS SIMPLES. DE BELLES HABITUDES. <span>Découvrez notre univers <b><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></b></span></div>
+  <header class="header wrap">
+    <a class="logo" href="#" aria-label="Print, accueil">print<span>®</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span>☰</span></button>
+    <nav id="navigation" aria-label="Navigation principale">
+      <a href="#selection">La sélection</a><a href="#histoire">L’esprit Print</a><a href="#questions">Vos questions</a>
+    </nav>
+    <button class="favorites-link" id="show-favorites" aria-pressed="false"><span aria-hidden="true">♡</span> <span class="favorites-label">Ma sélection</span> <span id="favorite-count">0</span></button>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span> LES PETITES CHOSES FONT LA DIFFÉRENCE</p>
+        <h1 id="hero-title">Le quotidien,<br>en <em>mieux.</em><span class="sun" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" aria-hidden="true"><path d="M50 7v86M7 50h86M20 20l60 60M20 80l60-60"/></svg></span></h1>
+        <p class="intro">Des objets qui trouvent naturellement leur place.<br class="desktop-break"> Chez vous, avec vous, tous les jours.</p>
+        <a class="button primary" href="#selection">Explorer la sélection <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a>
+        <div class="hero-note"><span aria-hidden="true">✦</span> Un peu d’utile. Beaucoup d’envie.</div>
+      </div>
+      <div class="hero-art">
+        <div class="art-label"><span class="dot"></span> L’ART DES PETITS RIEN</div>
+        <img src="/assets/scene.svg" alt="Composition illustrée : lampe terracotta, gourde verte et vase sur une table crème" width="720" height="680" fetchpriority="high">
+        <div class="floating-note">Votre prochain<br><em>petit essentiel.</em><span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></div>
+        <p class="art-caption">À LA MAISON OU EN CHEMIN <span>01 — 04</span></p>
+      </div>
+    </section>
+    <div class="values-strip"><div class="wrap"><span><b>✧</b> Des objets qui ont du sens</span><span><b><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></b> Pensés pour le quotidien</span><span><b>♡</b> À garder près de soi</span><span><b>☼</b> Le plaisir des choses simples</span></div></div>
+    <section class="catalog wrap section" id="selection" aria-labelledby="selection-title">
+      <div class="section-heading"><div><p class="eyebrow">LES FUTURS ESSENTIELS</p><h2 id="selection-title">Moins de choses.<br><em>Plus de coups de cœur.</em></h2></div><p>De la maison aux petites escapades,<br>une sélection à découvrir à votre rythme.</p></div>
+      <div class="catalog-toolbar"><div class="filters" role="group" aria-label="Filtrer les produits"><button class="filter active" data-category="all" aria-pressed="true">Tout explorer <span>04</span></button><button class="filter" data-category="maison" aria-pressed="false">À la maison</button><button class="filter" data-category="nomade" aria-pressed="false">En mouvement</button></div><span class="catalog-note">CATALOGUE DE DÉMONSTRATION</span></div>
+      <p id="results-status" class="sr-only" role="status"></p>
+      <div class="product-grid" id="product-grid"></div>
+      <p id="empty-state" class="empty-state" hidden>Aucun favori pour le moment. Touchez le cœur d’un objet pour le retrouver ici.</p>
+      <p class="demo-note">Produits et prix présentés à titre d’exemple. La vente en ligne n’est pas encore ouverte.</p>
+    </section>
+    <section class="story wrap" id="histoire" aria-labelledby="story-title">
+      <div class="story-art"><span class="story-word">less,<br><i>but better.</i></span><span class="story-flower" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" aria-hidden="true"><path d="M50 7v86M7 50h86M20 20l60 60M20 80l60-60"/></svg></span><span class="story-art-caption">LA PHILOSOPHIE PRINT — DEPUIS LE PREMIER JOUR</span></div>
+      <div class="story-copy"><p class="eyebrow">L’ESPRIT PRINT</p><h2 id="story-title">Pas besoin de tout.<br><em>Juste de l’essentiel.</em></h2><p>On aime les matins qui prennent leur temps, les espaces qui respirent et les objets qu’on utilise sans y penser.</p><p>Print, c’est l’envie de réunir ces petites trouvailles qui rendent la vie plus douce. Des lignes simples, des couleurs chaleureuses et une vraie place dans votre quotidien.</p><a class="text-link" href="#selection">Trouver mon prochain essentiel <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div>
+    </section>
+    <section class="faq wrap section" id="questions" aria-labelledby="faq-title">
+      <div><p class="eyebrow">ON VOUS RÉPOND</p><h2 id="faq-title">Les choses<br><em>en toute simplicité.</em></h2><p>Une question avant de découvrir la suite ?</p><button class="text-link" id="contact-button">Contacter Print <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></button></div>
+      <div class="questions"><details><summary>Peut-on déjà commander ? <span aria-hidden="true">+</span></summary><p>Ce site présente l’univers de Print et un catalogue de démonstration. Aucune commande ni aucun paiement ne sont possibles pour le moment.</p></details><details><summary>Comment fonctionne la sélection ? <span aria-hidden="true">+</span></summary><p>Explorez les catégories et ouvrez les fiches pour découvrir les objets. Le cœur vous permet de garder vos favoris dans ce navigateur, sans créer de compte.</p></details><details><summary>D’où seront expédiés les produits ? <span aria-hidden="true">+</span></summary><p>Le modèle envisagé est l’expédition directe par des fournisseurs partenaires. Leur identité, l’origine d’expédition et les délais devront être confirmés avant l’ouverture des ventes.</p></details><details><summary>Quels seront les délais et les conditions de retour ? <span aria-hidden="true">+</span></summary><p>Ces informations seront publiées avec les conditions de vente avant toute prise de commande. Aucun délai de livraison ni engagement de retour n’est annoncé à ce stade.</p></details></div>
+    </section>
+    <section class="closing"><div class="wrap"><p class="eyebrow">FAITES DE LA PLACE À CE QUI COMPTE</p><h2>De petits objets.<br>De <em>grands petits bonheurs.</em></h2><a class="button dark" href="#selection">Découvrir les essentiels <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a><span aria-hidden="true" class="closing-star"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" aria-hidden="true"><path d="M50 7v86M7 50h86M20 20l60 60M20 80l60-60"/></svg></span></div></section>
+  </main>
+  <footer class="wrap"><div class="footer-top"><a class="logo" href="#" aria-label="Print, retour en haut">print<span>®</span></a><p>Des objets simples.<br>Un quotidien qui vous ressemble.</p><a href="#selection">La sélection <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a href="#questions">Questions fréquentes <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Print · Site vitrine de démonstration</span><button id="legal-button">Informations du site</button><a href="#">Retour en haut ↑</a></div></footer>
+  <dialog id="product-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Fermer la fiche">×</button><div id="dialog-content"></div></dialog>
+  <dialog id="info-dialog" aria-labelledby="info-title"><button class="dialog-close" aria-label="Fermer">×</button><div class="info-content"><p class="eyebrow">PRINT</p><h2 id="info-title"></h2><p id="info-text"></p><button class="button dark info-ok">J’ai compris <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></button></div></dialog>
+  <div class="toast" role="status" id="toast"></div>
+</body>
+</html>
